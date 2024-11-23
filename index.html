@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .main {
+            width: 400px;
+            height: 500px;
+            border: 2px solid black;
+            text-align: center;
+            background-color: aqua;
+            position: relative;
+            left: 30%;
+            border-radius: 10px;
+
+        }
+        label{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        input[type="text"]{
+            width: 300px;
+            height: 4vh;
+            border-radius: 10px;
+            font-size: 25px;
+        }
+        .btm{
+            width: 300px;
+            display: inline-flex;
+            justify-content: space-evenly;
+        }
+        .btm button{
+            width: 60px;
+            height: 8vh;
+            font-size: 30px;
+            border-radius: 10px;
+        }
+        .btm button:hover{
+            box-shadow: 2px 2px 2px red;
+            background-color: yellow;
+        }
+    /* Media query for devices with a max width of 600px */
+    @media (max-width: 600px) {
+        .main {
+            width: 90%; /* Adjust width for smaller screens */
+            height: auto; /* Allow height to adapt */
+            left: 5%; /* Center horizontally */
+        }
+
+        input[type="text"] {
+            width: 80%; /* Reduce input width for smaller screens */
+            font-size: 18px; /* Smaller font size */
+        }
+
+        label {
+            font-size: 20px; /* Adjust label font size */
+        }
+
+        .btm {
+            width: 90%; /* Adjust width */
+        }
+
+        .btm button {
+            width: 50px; /* Smaller buttons */
+            font-size: 20px; /* Adjust font size */
+        }
+    }
+</style>
+</head>
+
+<body>
+    <marquee style="background-color: rebeccapurple; color: white; ">
+        <h1>Develop By NRI 1ST Year Student </h1>
+    </marquee>
+    <br><br>
+    <div class="main">
+
+        <form>
+            <h1>NRI Calculator</h1>
+            <label>Number-1</label>
+            <input id="d1" type="text" autocomplete="off"><br><br>
+            <label>Number-2</label>
+            <input id="d2" type="text" autocomplete="off"><br><br>
+            <div class="btm">
+            <button id="addbtm" type="button" onclick="add()"><i class="fa-solid fa-plus"></i></button>
+            <button id="subbtm" type="button" onclick="sub()"><i class="fa-solid fa-minus"></i></button>
+
+            <!-- <button type="button" onclick="rem()">/</button>
+            <button type="button" onclick="pow()">Pow</button> -->
+        </div><br><br>
+        <div class="btm">
+            <button id="mulbtm" type="button" onclick="mul()"><i class="fa-solid fa-xmark"></i></button>
+            <button id="divbtm" type="button" onclick="div()"><i class="fa-solid fa-divide"></i></button>
+        </div><br><br>
+            <label>Result:</label>
+            <input id="d3" type="text">
+        </form>
+        <h1>Develop By Nri First Student</h1>
+    </div>
+
+    <script>
+        function add(){
+            let a=parseFloat(document.getElementById("d1").value)
+            let b=parseFloat(document.getElementById("d2").value)
+            let sum=a+b
+            document.getElementById("d3").value=sum
+            document.getElementById("d1").value=" "
+            document.getElementById("d2").value=" "
+        }
+        function sub(){
+            let a=parseInt(document.getElementById("d1").value)
+            let b=parseInt(document.getElementById("d2").value)
+            let sub=a-b
+            document.getElementById("d3").value=sub
+            document.getElementById("d1").value=" "
+            document.getElementById("d2").value=" "
+        }
+
+        function mul(){
+            let a=parseInt(document.getElementById("d1").value)
+            let b=parseInt(document.getElementById("d2").value)
+            let mul=a*b
+            document.getElementById("d3").value=mul
+            document.getElementById("d1").value=" "
+            document.getElementById("d2").value=" "
+
+        }
+
+        function div(){
+            let a=parseInt(document.getElementById("d1").value)
+            let b=parseInt(document.getElementById("d2").value)
+            let div=a/b
+            document.getElementById("d3").value=div
+            document.getElementById("d1").value=" "
+            document.getElementById("d2").value=" "
+
+        }
+
+
+        document.getElementById("d1").addEventListener("keydown", function(msg) {
+
+            if(msg.key=="ArrowDown"){
+                msg.preventDefault()
+                document.getElementById("d2").focus()
+            }
+
+        })
+
+        document.getElementById("d1").addEventListener("keypress", function(msg) {
+
+            if(msg.key=="Enter"){
+                msg.preventDefault()
+                document.getElementById("d2").focus()
+            }
+
+        })
+
+        document.getElementById("d2").addEventListener("keydown",function(msg){
+            if(msg.key=="ArrowUp"){
+                msg.preventDefault()
+                document.getElementById("d1").focus()
+            }
+        })
+
+        document.getElementById("d2").addEventListener("keypress",function(msg){
+            if(msg.key=="Enter"){
+                msg.preventDefault()
+                document.getElementById("addbtm").focus()
+            }
+        })
+
+        document.getElementById("addbtm").addEventListener("keydown",function(msg){
+            if(msg.key=="ArrowRight"){
+                msg.preventDefault()
+                document.getElementById("subbtm").focus()
+            }
+        })
+
+        document.getElementById("addbtm").addEventListener("keydown",function(msg){
+            if(msg.key=="ArrowDown"){
+                msg.preventDefault()
+                document.getElementById("mulbtm").focus()
+            }
+        })
+
+        document.getElementById("mulbtm").addEventListener("keydown",function(msg){
+            if(msg.key=="ArrowUp"){
+                msg.preventDefault()
+                document.getElementById("addbtm").focus()
+            }
+        })
+
+        document.getElementById("mulbtm").addEventListener("keydown",function(msg){
+            if(msg.key=="ArrowRight"){
+                msg.preventDefault()
+                document.getElementById("divbtm").focus()
+            }
+        })
+
+        document.getElementById("divbtm").addEventListener("keydown",function(msg){
+            if(msg.key=="ArrowLeft"){
+                msg.preventDefault()
+                document.getElementById("mulbtm").focus()
+            }
+        })
+
+        document.getElementById("divbtm").addEventListener("keydown",function(msg){
+            if(msg.key=="ArrowUp"){
+                msg.preventDefault()
+                document.getElementById("subbtm").focus()
+            }
+        })
+        document.getElementById("subbtm").addEventListener("keydown",function(msg){
+            if(msg.key=="ArrowDown"){
+                msg.preventDefault()
+                document.getElementById("divbtm").focus()
+            }
+        })
+
+        document.getElementById("subbtm").addEventListener("keydown",function(msg){
+            if(msg.key=="ArrowLeft"){
+                msg.preventDefault()
+                document.getElementById("addbtm").focus()
+            }
+        })
+
+        
+
+    </script>
+
+</body>
+
+</html>
